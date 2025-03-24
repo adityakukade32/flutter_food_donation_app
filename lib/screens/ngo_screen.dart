@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapk/screens/Ngo_food.dart';
+import 'package:flutterapk/screens/ngo_homescreen.dart';
 
 void main() {
   runApp(NGOApp());
@@ -95,6 +96,37 @@ class _NgoScreenState extends State<NgoScreen> {
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(height: 30),
+                    SizedBox(height: 20),
+                    ElevatedButton(
+  onPressed: () async {
+    Navigator.pop(context);
+     ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text("Skipped to Homepage!")),
+    );
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => NGOFoodDisplayScreen(),
+      ),
+    );
+  },
+  style: ElevatedButton.styleFrom(
+    foregroundColor: Colors.blueAccent, 
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.zero, // Makes  it square
+    ),
+    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+    textStyle: const TextStyle(
+      fontWeight: FontWeight.bold, // Bold text
+      fontSize: 16,
+    ),
+  ),
+  child: const Text("Skip to Profile "),
+),
+
+
+
+                         SizedBox(height: 20),
                 TextFormField(
                   controller: _ngoNameController,
                   decoration: InputDecoration(

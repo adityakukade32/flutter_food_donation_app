@@ -141,10 +141,7 @@ class DonarHomeScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 10),
                     StreamBuilder<QuerySnapshot>(
-                      stream: requestCollection
-                          .orderBy('createdAt', descending: true)
-                          .limit(3)
-                          .snapshots(),
+                      stream: requestCollection.where('pickup', isEqualTo: true).limit(2).snapshots(),
                       builder: (context, snapshot) {
                         if (snapshot.connectionState ==
                             ConnectionState.waiting) {

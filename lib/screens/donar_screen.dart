@@ -181,6 +181,36 @@ class _DonarScreenState extends State<DonarScreen> {
                               fontSize: 24, fontWeight: FontWeight.bold),
                         ),
                         SizedBox(height: 20),
+                    ElevatedButton(
+  onPressed: () async {
+    Navigator.pop(context);
+     ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text("Skipped to Homepage!")),
+    );
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => DonarHomeScreen(),
+      ),
+    );
+  },
+  style: ElevatedButton.styleFrom(
+    foregroundColor: Colors.blueAccent, 
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.zero, // Makes  it square
+    ),
+    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+    textStyle: const TextStyle(
+      fontWeight: FontWeight.bold, // Bold text
+      fontSize: 16,
+    ),
+  ),
+  child: const Text("Skip to Donor Screen"),
+),
+
+
+
+                         SizedBox(height: 20),
                         _buildTextField(
                             _nameController, "Full Name", Icons.person),
                         _buildTextField(
